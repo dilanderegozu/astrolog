@@ -4,33 +4,33 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     name: {
-      typeof: String,
+      type: String, 
     },
     surname: {
-      typeof: String,
+      type: String, 
     },
     userId: {
-      typeof: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,  
     },
     email: {
-      typeof: String,
+      type: String,  
       required: true,
     },
     password: {
-      typeof: String,
+      type: String, 
     },
     birthDate: {
-      typeof: String,
+      type: String, 
     },
     age: {
-      typeof: String,
+      type: String,  
     },
     gender: {
       type: String,
       enum: ["kadın", "erkek"],
     },
     zodiacSign: {
-      typeof: String,
+      type: String,  
     },
   },
   {
@@ -43,3 +43,4 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema, "user");
 
 module.exports = User;
+
