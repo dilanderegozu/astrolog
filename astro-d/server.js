@@ -1,24 +1,24 @@
 const express = require("express");
 const db = require("./db/index");
 const configs = require("./configs/index");
-const router = require("./routers/index");
+const { zodiacRouter, userRouter, blogRouter } = require("./routers/index");
 const middlewares = require("./middlewares/index");
+
 const app = express();
 app.use(express.json());
 
 configs.serverConfig.initialServerConfig();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.use(middlewares.loggerMiddleware);
 app.use(middlewares.authMiddleware);
 
-app.use("/user", router.userRouter);
-app.use("/blog", router.blogRouter);
-app.use("/zodiac", router.zodiacRouter);
+app.use("/zodiac", zodiacRouter);
+app.use("/user", userRouter);
+app.use("/blog", blogRouter);
 
-db.mongoConnect
-  .mongoConnect()
+db.mongoConnect()
   .then(() => {
     app.listen(PORT, () => {
       console.log("Server", PORT, "portunda çalışıyor");
@@ -27,3 +27,4 @@ db.mongoConnect
   .catch((e) => {
     console.log("Hata oluştu:", e.message);
   });
+
