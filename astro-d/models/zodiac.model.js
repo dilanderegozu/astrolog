@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const zodiacSchema = new Schema(
   {
     title: {
-      typeof: String,
+      type: String,
     },
     daily: {
-      typeof: String,
+      type: String,
     },
     weekly: {
-      typeof: String,
+      type: String,
     },
     monthly: {
-      typeof: String,
+      type: String,
     },
   },
   {
@@ -24,5 +24,8 @@ const zodiacSchema = new Schema(
 );
 
 const Zodiac = mongoose.model("Zodiac", zodiacSchema, "zodiac");
+
+module.exports = Zodiac;
+
 
 module.exports = Zodiac;
